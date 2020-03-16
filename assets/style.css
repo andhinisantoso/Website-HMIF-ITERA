@@ -20,11 +20,9 @@ body {
 .upload {
     position: relative;
     width: 400px;
-    min-height: 445px;
     box-sizing: border-box;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding-bottom: 20px;
     background: #fff;
     -webkit-animation: fadeup .5s .5s ease both;
     animation: fadeup .5s .5s ease both;

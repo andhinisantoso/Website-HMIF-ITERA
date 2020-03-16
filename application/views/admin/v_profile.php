@@ -7,7 +7,8 @@
     <title>Admin Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url() ?>assets/profile.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     </head>
   <!-- akhir head -->
   
@@ -59,74 +60,49 @@
         
 
         <div class="form-profile">
-          <h2 id="photo-banner">Photo Banner<a class="anchorjs-link" href="#photo-banner"><span class="anchorjs-icon"></span></a></h2>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-image"></i></span>
-              </div>
-              <input type="text" class="form-control" disabled>
-              <div class="input-group-append">
-                <span class="input-group-button">
-                <button class="edit btn btn-primary input-lg" data-toggle="modal" data-target="#photo" type="button"><i class="fa fa-edit"></i>  Edit</button>
-                </span>
-              </div>
-            </div>
-            
-            
-          <h2 id="visi-misi">Visi & Misi<a class="anchorjs-link" href="#visi-misi"><span class="anchorjs-icon"></span></a></h2>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-image"></i></span>
-              </div>
-              <input type="text" class="form-control" disabled>
-              <div class="input-group-append">
-                <span class="input-group-button">
-                <button class="edit btn btn-primary input-lg" data-toggle="modal" data-target="#visi_misi" type="button"><i class="fa fa-edit"></i>  Edit</button>
-                </span>
-              </div>
-            </div>
-            
-            
-          <h2 id="history">History<a class="anchorjs-link" href="#history"><span class="anchorjs-icon"></span></a></h2>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-image"></i></span>
-              </div>
-              <input type="text" class="form-control" disabled>
-              <div class="input-group-append">
-                <span class="input-group-button">
-                <button class="edit btn btn-primary input-lg" data-toggle="modal" data-target="#historym" type="button"><i class="fa fa-edit"></i>  Edit</button>
-                </span>
-              </div>
-            </div>
-            
-            
-          <h2 id="logo">Logo<a class="anchorjs-link" href="#logo"><span class="anchorjs-icon"></span></a></h2>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-image"></i></span>
-              </div>
-              <input type="text" class="form-control" disabled>
-              <div class="input-group-append">
-                <span class="input-group-button">
-                <button class="edit btn btn-primary input-lg" data-toggle="modal" data-target="#logom" type="button"><i class="fa fa-edit"></i>  Edit</button>
-                </span>
-              </div>
-            </div>
-            
-            
-          <h2 id="staff">Staff<a class="anchorjs-link" href="#staff"><span class="anchorjs-icon"></span></a></h2>
-             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-image"></i></span>
-              </div>
-              <input type="text" class="form-control" disabled>
-              <div class="input-group-append">
-                <span class="input-group-button">
-                <button class="edit btn btn-primary input-lg" data-toggle="modal" data-target="#staffm" type="button"><i class="fa fa-edit"></i>  Edit</button>
-                </span>
-              </div>
-            </div>
+
+          <button type="button" class="btn btn-outline-success"><i class="fa fa-plus">&nbsp</i>Tambah Data</button>
+          <hr>
+
+          <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th style="width: 5px;">Nomor</th>
+                <th>Nama Kepengurusan</th>
+                <th>Periode</th>
+                <th>Photo Banner</th>
+                <th>Visi & Misi</th>
+                <th>History</th>
+                <th>Logo</th>
+                <th>Staff</th>
+                <th style="width: 50px;">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <?php
+                  $no = 1;
+                  foreach ($data->result() as $row ) {
+                  ?>
+                <td><?= $no++ ?></td>
+                <td><?= $row->nm_kepengurusan; ?></td>
+                <td><?= $row->periode; ?></td>
+                <td><?= $row->foto_baner;  ?></td>
+                <td><?= $row->foto_visimisi;  ?></td>
+                <td><?= $row->foto_sejarah; ?></td>
+                <td><?= $row->foto_logo;  ?></td>
+                <td><?= $row->foto_staff;  ?></td>
+                <td>
+                  <a href="<?= base_url(); ?>admin_profile/edit/<?= $row->id_profil; ?>">
+                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
+                  </a>
+                  <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                  </button>
+                </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+    </table>
             
         </div>
         
@@ -134,7 +110,7 @@
 </div>
 
 <!-- modal untuk photo banner -->
-<div class="modal fade" id="photo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="photo_banner" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -144,7 +120,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+      <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Simpan Data</label>
           </div>
@@ -273,6 +249,12 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script  src="<?= base_url() ?>assets/profile.js"></script>
-
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
 </body>
 </html>

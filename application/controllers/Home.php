@@ -1,6 +1,10 @@
 <?php
-class Home extends CI_Controller{
-    public function index(){
-        $this->load->view('admin/v_profile');
-    }
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Home extends CI_Controller {
+
+	public function index()
+	{
+		$this->load->view('publik/v_home');
+	}
 }
