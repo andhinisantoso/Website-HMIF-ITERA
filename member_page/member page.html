@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- awal head -->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Page</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="./member.css">
+
+</head>
+<!-- akhir head -->
+
+<!-- awal body -->
+
+<body>
+
+  <!-- awal header -->
+  <div class="header">
+    <a href="#" id="menu-action">
+      <i class="fa fa-bars"></i>
+      <span>Close</span>
+    </a>
+
+    <!-- awal navbar horizontal   -->
+    <div class="logo">
+      <nav class="tab">
+        <ul>
+          <li><a href="#"><i class="fa fa-user"></i><span>MY SITE</span></a></li>
+          <li><a href="#"><i class="fa fa-newspaper-o"></i><span>READER</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- akhir navbar horizontal -->
+
+  </div>
+  <!-- akhir header -->
+
+  <!-- awal sidebar -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="#"><i class="fa fa-desktop"></i><span>Profile</span></a></li>
+      <li><a href="#"><i class="fa fa-group"></i><span>Member</span></a></li>
+      <li><a href="#"><i class="glyphicon glyphicon-folder-open"></i><span>Repository</span></a></li>
+      <li><a href="#"><i class="fa fa-calendar"></i><span>Event</span></a></li>
+  </div>
+  <!-- akhir sidebar -->
+
+  <!-- Content -->
+  <div class="main">
+    <div class="hipsum">
+
+      <div class="jumbotron">
+        <h1 id="member page">Member page<a class="anchorjs-link" href="#member-page"><span
+              class="anchorjs-icon"></span></a></h1>
+        <p>Pada bagian ini berisi data dari anggota HMIF
+        </p>
+      </div>
+
+      <div class="container" style="width:1000px;">
+        <br>
+
+        <div id="tambah">
+          <a class="tambahkan" href="">Tambahkan</a>
+        </div>
+        <br>
+        <br>
+        <div class="table-responsive">
+          <table class="table table-unbordered">
+            <tr>
+              <th>Tahun Masuk </th>
+              <th>Tahun Keluar</th>
+              <th>NIM</th>
+              <th>Nama</th>
+              <th>Judul Skripsi</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr>
+              <td>2017</td>
+              <td>2021</td>
+              <td>14117015</td>
+              <td>Andika Haris Pratama</td>
+              <td>-------</td>
+              <td>
+                <button type='button' class='btn btn-primary'>Edit</button>
+              </td>
+              <td>
+                <button type='button' class='btn btn-primary'> Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>2017</td>
+              <td>2021</td>
+              <td>14117007</td>
+              <td>Ahmad Auzan V.S</td>
+              <td>-------</td>
+              <td>
+                <button type='button' class='btn btn-primary'>Edit</button>
+              </td>
+              <td>
+                <button type='button' class='btn btn-primary'> Delete</button>
+              </td>
+            </tr>
+        </div>
+      </div>
+
+
+      <!-- partial -->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src="./profile.js"></script>
+
+</body>
+
+</html>
