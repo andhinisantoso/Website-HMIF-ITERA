@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
+body,
+html {
+    border: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-screen {
+    height: 100%;
+    z-index: 500;
+    position: fixed;
+    background-color: #000;
+    opacity: 1;
+    right: -285px;
+    /* start off behind the scenes */
+    -webkit-font-smoothing: antialiased;
+    position: fixed;
+    width: 285px;
+}
+
+.nav-screen .active {
+    display: block;
+}
+
+
+/* nav header links */
+
+.nav-brand {
+    position: fixed;
+    left: 0;
+    z-index: 600;
+    padding: 10px;
+}
+
+.nav-brand img {
+    width: 50px;
+}
+
+.fa-bars {
+    display: none !important;
+    color: #4D5B37;
+    float: right;
+    padding: 20px;
+    position: fixed;
+    right: 0;
+    z-index: 500;
+    cursor: pointer;
+}
+
+.fa-times {
+    color: #4D5B37;
+    float: right;
+    padding: 20px;
+    right: 0;
+    z-index: 600;
+    cursor: pointer;
+}
+
+.header-links {
+    position: fixed;
+    width: 100%;
+    z-index: 500;
+}
+
+.header-links li {
+    color: white;
+    display: inline;
+    float: right;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.header-links a {
+    font-weight: bold;
+    color: #FCD729;
+    -webkit-transition: all 0.2s ease-in;
+}
+
+.header-links a:hover {
+    color: #4D5B37 !important;
+}
+
+
+/* slide out nav menu styles */
+
+.nav-container {
+    padding-top: 10%;
+}
+
+.nav-links {
+    width: 250px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-links ul {
+    margin-top: 15%;
+    text-align: center;
+    padding-top: 10%;
+}
+
+.nav-links a {
+    color: #FFFFFF;
+    font-size: 30px;
+    line-height: 2.5;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav-links a:hover {
+    color: #4D5B37;
+    -webkit-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
+    -ms-transition: all 0.6s ease-in-out;
+    -moz-transition: all 0.6s ease-in-out;
+    transition: all 0.6s ease-in-out;
+}
+
+#fp-nav ul li .fp-tooltip {
+    color: #5F5F5F !important;
+}
+
+.profile .promotions {
+    width: 100%;
+    height: 100%;
+}
+
+.profile .grid {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    background-size: cover;
+    background-position: top right;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.profile .grid .shade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, 0.5)), color-stop(50%, rgba(0, 0, 0, 0)));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0) 50%);
+}
+
+.navigation {
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 50px;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navigation li {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    margin: 15px 0;
+}
+
+.navigation li a {
+    background-color: #fff;
+    border-radius: 100%;
+    height: 100%;
+    width: 100%;
+    display: block;
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+}
+
+.navigation li a.active {
+    background-color: #b10000;
+}
