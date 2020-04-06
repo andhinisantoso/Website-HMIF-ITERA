@@ -248,4 +248,52 @@ class Admin_profile extends CI_Controller {
 		}
 		$this->load->view('admin/v_pop_edit', $isi);
 	}
+
+	function nambah()
+		{
+			$key = $this->uri->segment(3);
+			$this->db->where('id_profil', $key);
+			$query = $this->db->get('profil');
+			if($query->num_rows()>0)
+			{
+				foreach ($query->result() as $row) 
+				{
+					$isi['key'] 				= $this->uri->segment(3);
+					$isi['nm_kepengurusan']		= $row->nm_kepengurusan;
+					$isi['periode']				= $row->periode;
+					$isi['foto_sejarah']		= $row->foto_sejarah;
+					$isi['foto_kepengurusan']	= $row->foto_kepengurusan;
+					$isi['foto_logo']			= $row->foto_logo;
+					$isi['foto_baner']			= $row->foto_baner;
+					$isi['foto_visimisi']		= $row->foto_visimisi;
+					$isi['foto_staff']			= $row->foto_staff;
+				}
+			}
+			else
+			{
+				$isi['key'] 				= '';
+				$isi['nm_kepengurusan']		= '';
+				$isi['periode']				= '';
+				$isi['foto_sejarah']		= '';
+				$isi['foto_kepengurusan']	= '';
+				$isi['foto_logo']			= '';
+				$isi['foto_baner']			= '';
+				$isi['foto_visimisi']		= '';
+				$isi['foto_staff']			= '';
+			}
+			$this->load->view('admin/v_pop_nambah', $isi);
+		}
+
+	public function hapus()
+	{
+		$key = $this->uri->segment(3);
+		$this->Model_data->hapus_profile($key);
+		redirect('admin_profile');
+	}
+	public function simpan_nambah()
+	{
+		$nm_kepengurusan = $this->input->post('nm_kepengurusan');
+		$periode = $this->input->post('periode');
+		$this->M_upload->simpan_nambah_profile($nm_kepengurusan,$periode);
+	}
 }

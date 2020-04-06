@@ -1,51 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-  <!-- awal head -->
-  <head>
-    <meta charset="UTF-8">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/profile.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    </head>
-  <!-- akhir head -->
-  
-  <!-- awal body -->
-  <body>
-
-    <!-- awal header -->
-    <div class="header">
-      <a href="#" id="menu-action">
-        <i class="fa fa-bars"></i>
-        <span>Close</span>
-      </a>
-    
-      <!-- awal navbar horizontal   -->
-      <div class="logo">
-        <nav class="tab">
-          <ul>
-            <li><a href="#"><i class="fa fa-user"></i><span>MY SITE</span></a></li>
-            <li><a href="#"><i class="fa fa-newspaper-o"></i><span>READER</span></a></li>
-          </ul>
-        </nav>
-      </div>
-      <!-- akhir navbar horizontal -->
-
-    </div>
-    <!-- akhir header -->
-
-    <!-- awal sidebar -->
-    <div class="sidebar">
-      <ul>
-        <li><a href="#"><i class="fa fa-desktop"></i><span>Profile</span></a></li>
-        <li><a href="#"><i class="fa fa-group"></i><span>Member</span></a></li>
-        <li><a href="#"><i class="fa fa-folder"></i><span>Repository</span></a></li>
-        <li><a href="#"><i class="fa fa-calendar"></i><span>Event</span></a></li>
-    </div>
-    <!-- akhir sidebar -->
-
+<?php $this->load->view('admin/header.php')  ?>
+<?php $this->load->view('admin/sidebar.php')  ?>
     <!-- Content -->
     <div class="main">
       <div class="hipsum">
@@ -56,11 +10,8 @@
               Data yang dapat dimasukan oleh Administrator berupa gambar (JPG, JPEG dan PNG).
           </p>
         </div>
-      
-        
-
         <div class="form-profile">
-
+          <a href="<?= base_url(); ?>admin_profile/nambah">
           <button type="button" class="btn btn-outline-success"><i class="fa fa-plus">&nbsp</i>Tambah Data</button>
           <hr>
 
@@ -96,8 +47,10 @@
                   <a href="<?= base_url(); ?>admin_profile/edit/<?= $row->id_profil; ?>">
                     <button type="button" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
                   </a>
-                  <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                  </button>
+                  <a href="<?= base_url(); ?>admin_profile/hapus/<?= $row->id_profil; ?>" onclick="return confirm ('Apakah yakin ingin menghapus data ini ?');">
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                    </button>
+                  </a>
                 </td>
             </tr>
           <?php } ?>
@@ -243,18 +196,4 @@
   </div>
 </div>
 <!-- end modal staff -->
-
-<!-- partial -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script  src="<?= base_url() ?>assets/profile.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#example').DataTable();
-} );
-</script>
-</body>
-</html>
+<?php $this->load->view('admin/footer.php')  ?>
