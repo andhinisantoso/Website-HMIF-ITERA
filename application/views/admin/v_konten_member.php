@@ -11,7 +11,7 @@
 
       <div class="form-profile">
         <br>
-
+		<a href="<?= base_url(); ?>admin_member/nambah">
         <button type="button" class="btn btn-outline-success"><i class="fa fa-plus">&nbsp</i>Tambah Data</button>
           <hr>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -43,8 +43,10 @@
                   <a href="<?= base_url(); ?>admin_member/edit/<?= $row->nim; ?>">
                     <button type="button" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
                   </a>
-                  <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                  </button>
+                  <a href="<?= base_url(); ?>admin_member/hapus/<?= $row->nim; ?>" onclick="return confirm ('Apakah yakin ingin menghapus data ini ?');">
+                  	<button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                  	</button>
+                  </a>
                 </td>
             </tr>
           <?php } ?>

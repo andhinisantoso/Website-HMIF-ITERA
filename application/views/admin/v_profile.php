@@ -11,7 +11,7 @@
           </p>
         </div>
         <div class="form-profile">
-
+          <a href="<?= base_url(); ?>admin_profile/nambah">
           <button type="button" class="btn btn-outline-success"><i class="fa fa-plus">&nbsp</i>Tambah Data</button>
           <hr>
 
@@ -47,8 +47,10 @@
                   <a href="<?= base_url(); ?>admin_profile/edit/<?= $row->id_profil; ?>">
                     <button type="button" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
                   </a>
-                  <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
-                  </button>
+                  <a href="<?= base_url(); ?>admin_profile/hapus/<?= $row->id_profil; ?>" onclick="return confirm ('Apakah yakin ingin menghapus data ini ?');">
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                    </button>
+                  </a>
                 </td>
             </tr>
           <?php } ?>
