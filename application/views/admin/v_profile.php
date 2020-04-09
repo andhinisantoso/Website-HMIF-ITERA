@@ -13,6 +13,7 @@
         <div class="form-profile">
           <a href="<?= base_url(); ?>admin_profile/nambah">
           <button type="button" class="btn btn-outline-success"><i class="fa fa-plus">&nbsp</i>Tambah Data</button>
+        </a>
           <hr>
 
           <table id="example" class="table table-striped table-bordered" style="width:100%">
