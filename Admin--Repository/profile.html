@@ -49,38 +49,52 @@
 
     <!-- Content -->
     <div class="main">
-      <div class="hipsum">
-        
-        <div class="jumbotron">
-          <h1 id="profile-page">Repository Page<a class="anchorjs-link" href="#profile-page"><span class="anchorjs-icon"></span></a></h1>
-          <p>Pada Repository Page,Administrator dapat mengupload file dan terdapat 2 penguploadan yaitu upload Materi TPB dengan Prodi Informatika
-          </p>
-        </div>
+    <div class="hipsum">
 
-        <div class="form-profile">
-            <div class="form-group">
-                <h2 id="photo-banner">TPB<a class="anchorjs-link" href="#photo-banner"><span class="anchorjs-icon"></span></a></h2>
-                    <div class="input-group col-xs-12">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                        <input type="text" class="form-control input-lg" disabled placeholder="Upload disini">
-                        <span class="input-group-btn">
-                            <button class="edit btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-cloud-upload"></i> Upload </button>
-                        </span>
-                    </div>
-            </div>
-            <div class="form-group">
-                <h2 id="visi-misi">Prodi Informatika<a class="anchorjs-link" href="#visi-misi"><span class="anchorjs-icon"></span></a></h2>
-                    <div class="input-group col-xs-12">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-file"></i></span>
-                        <input type="text" class="form-control input-lg" disabled placeholder="Upload disini">
-                        <span class="input-group-btn">
-                            <button class="edit btn btn-primary input-lg" type="button"><i class="glyphicon glyphicon-cloud-upload"></i> Upload  </button> -->
-                        </span>
-                    </div>
-            </div>
-        </div>
-        
-  </div>
+      <div class="jumbotron">
+        <h1 id="member page">Repository Page<a class="anchorjs-link" href="#member-page"><span
+              class="anchorjs-icon"></span></a></h1>
+        <p>Pada Repository Page ,Administrator dapat mengupload file berdasar dengan link google drive dan dapat mengkategorikan file tersebut
+        </p>
+      </div>
+
+      <div class="form-profile">
+        <br>
+    <a href="<?= base_url(); ?>admin_member/nambah">
+        <button type="button" class="btn btn-outline-success"><i class="fa fa-plus">&nbsp</i>Tambah Data</button>
+      </a>
+          <hr>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Nama File</th>
+                <th>Link file</th>
+                <th style="width: 100px">Aksi</th>
+                <!-- <th style="width: 50px;">Aksi</th> -->
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                  <!--<?php
+                  $no = 1;
+                  foreach ($data->result() as $row ) {
+                  ?>
+                ini isi backend jan  -->
+                <td>TPB</td>
+                <td>Kalkulus dasar</td>
+                <td>doc.google.com</td>
+                <td>
+                    <button type="button" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
+                    </button>
+                  
+                </td>
+            </tr>
+          <?php } ?>
+        </tbody>
+    </table>
+
 </div>
 
 
