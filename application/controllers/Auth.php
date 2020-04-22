@@ -11,9 +11,45 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $this->load->view('templates/auth_header');
-        $this->load->view('auth/login');
-        $this->load->view('templates/auth_footer');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Login Page';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login');
+            $this->load->view('templates/auth_footer');
+        } else {
+            $this->_login();
+        }
+    }
+
+    private function _login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if ($user) {
+            if ($user['id_active'] == 1) {
+                if (password_verify($password, $user['password'])) {
+                    $data = ['email' => $user['email']];
+                    $this->session->set_userdata($data);
+                    // redirect ke profile page
+                    redirect('user');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!</div>');
+                    redirect('auth');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This email has not been activated!</div>');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email is not registered!</div>');
+            redirect('auth');
+        }
     }
 
     public function registration()
@@ -36,14 +72,50 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             $data = [
-                'email' => $this->input->post('email'),
-                // htmlspecialchars($this->input->post('email', true)),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-                'id_active' => 1,
+                'email' => htmlspecialchars($this->input->post('email', true)),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'id_active' => 0,
             ];
 
             $this->db->insert('user', $data);
+            // $this->_sendEmail();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! Your account has been created. Please Login!</div>');
             redirect('auth');
         }
+    }
+
+    // private function _sendEmail()
+    // {
+    //     $config = [
+    //         'protocol' => 'smtp',
+    //         'smtp_host' => 'ssl://smtp.googlemail.com',
+    //         'smtp_user' => 'andhinisantoso080198@gmail.com',
+    //         'smtp_pass' => 'ama',
+    //         'smtp_port' => 465,
+    //         'mailtypr' => 'html',
+    //         'charset' => 'utf-8',
+    //         'newline' => "\r\n"
+    //     ];
+
+    //     $this->load->library('email', $config);
+
+    //     $this->email->from('andhinisantoso080198@gmail.com', 'Andhini');
+    //     $this->email->to('andhini.14117058@student.itera.ac.id');
+    //     $this->email->subject('Testing');
+    //     $this->email->message('Hello');
+
+    //     if ($this->email->send()) {
+    //         return true;
+    //     } else {
+    //         echo $this->email->print_debugger();
+    //         die;
+    //     }
+    // }
+
+    public function logout()
+    {
+        $this->session->unset->userdata('email');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">You have been logged out !</div>');
+        redirect('auth');
     }
 }
