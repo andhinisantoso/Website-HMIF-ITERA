@@ -74,7 +74,7 @@ class Auth extends CI_Controller
             $data = [
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'id_active' => 0,
+                'id_active' => 1,
             ];
 
             $this->db->insert('user', $data);
